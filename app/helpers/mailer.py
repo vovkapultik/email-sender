@@ -1,4 +1,5 @@
 import smtplib
+import random
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -13,7 +14,7 @@ def send(subject: str, to: str, html: str):
     message = MIMEMultipart()
     message['From'] = settings.SENDER_EMAIL_ADDRESS
     message['To'] = to
-    message['Subject'] = subject
+    message['Subject'] = f'{subject} #{random.randint(0, 10**6)}'
 
     message.attach(content)
 
